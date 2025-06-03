@@ -1,5 +1,5 @@
 const buttonColors = ['red', 'blue', 'green', 'yellow'];
-
+const startBtn = document.getElementById("start-btn");
 let userClickedPattern = [];
 let gamePattern = [];
 
@@ -49,7 +49,8 @@ function checkAnswer(currentLevel) {
     setTimeout(function() {
       $('body').removeClass('game-over');
     }, 200);
-    $('h1').text('Game Over, Press Any Key to Restart');
+    $('h1').text('Game Over, Press Start Button to Restart');
+    startBtn.style.display = "block";
     userClickedPattern = [];
     gamePattern = [];
     level = 0;
@@ -66,11 +67,11 @@ $('.btn').click(function() {
  
 });
 
-$('body').keydown(function() {
+startBtn.addEventListener("click", function() {
   if(!started) {
     nextSequence();
     started = true;
-    
+    startBtn.style.display = "none";
   } 
   
 });
